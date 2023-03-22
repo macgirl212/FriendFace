@@ -24,12 +24,16 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List(sortedUsers, id: \.id) { user in
-                HStack(alignment: .center) {
-                    Text(user.name)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text(user.isActive ? "Online" : "Offline")
-                        .foregroundColor(user.isActive ? Color.green : Color.red)
+                NavigationLink {
+                    UserDetailView(user: user)
+                } label: {
+                    HStack(alignment: .center) {
+                        Text(user.name)
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(user.isActive ? "Online" : "Offline")
+                            .foregroundColor(user.isActive ? Color.green : Color.red)
+                    }
                 }
             }
             .navigationTitle("Friend Face")
