@@ -10,7 +10,8 @@ import SwiftUI
 struct FriendsView: View {
     @Environment(\.dismiss) var dismiss
     
-    var friends: [Friend]
+    @Binding var title: String
+    @Binding var friends: [Friend]
     
     var body: some View {
         NavigationStack {
@@ -19,7 +20,7 @@ struct FriendsView: View {
                     Text(friend.name)
                 }
             }
-            .navigationTitle("Friend List")
+            .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -32,6 +33,6 @@ struct FriendsView_Previews: PreviewProvider {
         Friend(id: "345", name: "Harry")
     ]
     static var previews: some View {
-        FriendsView(friends: sampleFriends)
+        FriendsView(title: .constant("Friend View"), friends: .constant(sampleFriends))
     }
 }

@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct UserDetailView: View {
+    var allUsers: [User]
     var user: User
     
     @State private var isShowingFriendsView = false
+    @State private var title = "Friend List"
+    @State private var friendsList = [Friend]()
     
     var body: some View {
         ScrollView {
@@ -40,7 +43,7 @@ struct UserDetailView: View {
             
             UserDetailSegmentView(heading: "About", userDetails: user.about)
             
-            UserTagsView(tags: user.tags)
+            UserTagsView(allUsers: allUsers, selectedUser: user.name, tags: user.tags)
                 .padding(.bottom)
             
             Button {
@@ -50,7 +53,9 @@ struct UserDetailView: View {
             }
         }
         .sheet(isPresented: $isShowingFriendsView) {
-            FriendsView(friends: user.friends)
+            FriendsView(title: $title, friends: $friendsList)
+        } .task {
+            friendsList = user.friends
         }
     }
 }
@@ -76,6 +81,6 @@ struct UserDetailView_Previews: PreviewProvider {
     )
     
     static var previews: some View {
-        UserDetailView(user: exampleUser)
+        UserDetailView(allUsers: [exampleUser], user: exampleUser)
     }
 }
