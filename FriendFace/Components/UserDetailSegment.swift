@@ -1,5 +1,5 @@
 //
-//  UserDetailSegmentView.swift
+//  UserDetailSegment.swift
 //  FriendFace
 //
 //  Created by Melody Davis on 3/22/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserDetailSegmentView: View {
+struct UserDetailSegment: View {
     var heading: String
     var userDetails: String
     var body: some View {
@@ -22,8 +22,8 @@ struct UserDetailSegmentView: View {
     }
 }
 
-struct UserDetailSegmentView_Previews: PreviewProvider {
+struct UserDetailSegment_Previews: PreviewProvider {
     static var previews: some View {
-        UserDetailSegmentView(heading: "Age", userDetails: "30")
+        UserDetailSegment(heading: "Age", userDetails: "30")
     }
 }

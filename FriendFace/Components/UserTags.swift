@@ -1,5 +1,5 @@
 //
-//  UserTagsView.swift
+//  UserTags.swift
 //  FriendFace
 //
 //  Created by Melody Davis on 3/22/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserTagsView: View {
+struct UserTags: View {
     var allUsers: [User]
     var selectedUser: String
     var tags: [String]
@@ -35,8 +35,13 @@ struct UserTagsView: View {
                         }
                     }
                     .padding()
-                    .background(Color.blue.opacity(0.2))
+                    .background(Color.blue.opacity(0.1))
                     .clipShape(Capsule())
+                    .overlay(
+                        Capsule()
+                            .stroke(Color.blue, lineWidth: 2)
+                    )
+                    .padding(2)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .center)

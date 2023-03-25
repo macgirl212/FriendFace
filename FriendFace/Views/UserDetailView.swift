@@ -43,25 +43,27 @@ struct UserDetailView: View {
                 )
                 .padding(.bottom)
             
-            UserDetailSegmentView(heading: "Joined", userDetails: user.registered.formatted(.dateTime.month(.twoDigits).day(.twoDigits).year(.twoDigits)))
+            UserDescription(user: user)
             
-            UserDetailSegmentView(heading: "Age", userDetails: String(user.age))
+            RectangleDivider()
             
-            UserDetailSegmentView(heading: "Company", userDetails: user.company)
-            
-            UserDetailSegmentView(heading: "Email", userDetails: user.email)
-            
-            UserDetailSegmentView(heading: "Address", userDetails: user.address)
-            
-            UserDetailSegmentView(heading: "About", userDetails: user.about)
-            
-            UserTagsView(allUsers: allUsers, selectedUser: user.name, tags: user.tags)
+            UserTags(allUsers: allUsers, selectedUser: user.name, tags: user.tags)
                 .padding(.bottom)
             
             Button {
                 isShowingFriendsView = true
             } label: {
                 Text("View Friends")
+                    .font(.headline)
+                    .foregroundColor(Color.white)
+                    .padding()
+                    .background(Color.blue)
+                    .clipShape(Capsule())
+                    .padding(2)
+                    .overlay(
+                        Capsule()
+                            .stroke(Color.blue.opacity(0.2), lineWidth: 4)
+                    )
             }
         }
         .sheet(isPresented: $isShowingFriendsView) {
