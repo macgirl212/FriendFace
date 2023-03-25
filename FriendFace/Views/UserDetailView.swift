@@ -9,7 +9,15 @@ import SwiftUI
 
 struct UserDetailView: View {
     var allUsers: [User]
-    var user: User
+    var userId: String
+    
+    
+    var user: User {
+        if let selectedUser = allUsers.first(where: { $0.id == userId }) {
+            return selectedUser
+        }
+        fatalError("User does not exist.")
+    }
     
     @State private var isShowingFriendsView = false
     @State private var title = "Friend List"
@@ -27,8 +35,12 @@ struct UserDetailView: View {
                 .foregroundColor(user.isActive ? Color.green : Color.red)
                 .padding(10)
                 .frame(width: 150)
-                .background(user.isActive ? Color.black.opacity(0.6) : Color.gray.opacity(0.5))
+                .background(user.isActive ? Color.green.opacity(0.1) : Color.red.opacity(0.1))
                 .clipShape(Capsule())
+                .overlay(
+                    Capsule()
+                        .stroke(user.isActive ? Color.green.opacity(0.6) : Color.red.opacity(0.5), lineWidth: 4)
+                )
                 .padding(.bottom)
             
             UserDetailSegmentView(heading: "Joined", userDetails: user.registered.formatted(.dateTime.month(.twoDigits).day(.twoDigits).year(.twoDigits)))
@@ -53,7 +65,7 @@ struct UserDetailView: View {
             }
         }
         .sheet(isPresented: $isShowingFriendsView) {
-            FriendsView(title: $title, friends: $friendsList)
+            FriendsView(allUsers: allUsers, title: $title, friends: $friendsList)
         } .task {
             friendsList = user.friends
         }
@@ -81,6 +93,6 @@ struct UserDetailView_Previews: PreviewProvider {
     )
     
     static var previews: some View {
-        UserDetailView(allUsers: [exampleUser], user: exampleUser)
+        UserDetailView(allUsers: [exampleUser], userId: "123")
     }
 }

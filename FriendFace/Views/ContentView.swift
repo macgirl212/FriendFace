@@ -25,7 +25,7 @@ struct ContentView: View {
         NavigationStack {
             List(sortedUsers, id: \.id) { user in
                 NavigationLink {
-                    UserDetailView(allUsers: users, user: user)
+                    UserDetailView(allUsers: users, userId: user.id)
                 } label: {
                     HStack(alignment: .center) {
                         Text(user.name)

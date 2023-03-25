@@ -29,7 +29,6 @@ struct UserTagsView: View {
                 LazyVGrid(columns: columns, alignment: .center) {
                     ForEach(tags.sorted(), id: \.self) { tag in
                         Button {
-                            print(tag)
                             findUsersByTag(tag)
                         } label: {
                             Text(tag)
@@ -44,7 +43,7 @@ struct UserTagsView: View {
             
         }
         .sheet(isPresented: $isShowingFriendsViewFromTag) {
-            FriendsView(title: $title, friends: $possibleFutureFriends)
+            FriendsView(allUsers: allUsers, title: $title, friends: $possibleFutureFriends)
         }
     }
     
