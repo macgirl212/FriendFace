@@ -50,6 +50,8 @@ struct UserDetailView: View {
             UserTags(allUsers: allUsers, selectedUser: user.name, tags: user.tags)
                 .padding(.bottom)
             
+            RectangleDivider()
+            
             Button {
                 isShowingFriendsView = true
             } label: {

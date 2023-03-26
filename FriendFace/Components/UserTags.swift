@@ -21,13 +21,17 @@ struct UserTags: View {
         GridItem(.flexible()),
     ]
     
+    var filteredTags: [String] {
+        return tags.removingDuplicates()
+    }
+    
     var body: some View {
         VStack {
             Text("Tags:")
                 .font(.headline)
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .center) {
-                    ForEach(tags.sorted(), id: \.self) { tag in
+                    ForEach(filteredTags.sorted(), id: \.self) { tag in
                         Button {
                             findUsersByTag(tag)
                         } label: {
@@ -63,5 +67,19 @@ struct UserTags: View {
 
         possibleFutureFriends = convertedUsers
         isShowingFriendsViewFromTag = true
+    }
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
     }
 }
