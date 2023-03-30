@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
-    
     @State private var users = [User]()
     
     var sortedUsers: [User] {
@@ -45,9 +42,8 @@ struct ContentView: View {
             if users.count == 0 {
                 do {
                     try await loadData()
-                    // await cacheUsers(users: users)
                 } catch {
-                    print("\(error)")
+                    fatalError("\(error)")
                 }
             }
         }
@@ -76,31 +72,6 @@ struct ContentView: View {
             print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
         }
         .resume()
-    }
-    
-    func cacheUsers(users: [User]) async {
-        await MainActor.run {
-            for user in users {
-                let cachedUser = CachedUser(context: moc)
-                cachedUser.id = user.id
-                cachedUser.isActive = user.isActive
-                cachedUser.name = user.name
-                cachedUser.age = Int16(user.age)
-                cachedUser.company = user.company
-                cachedUser.email = user.email
-                cachedUser.address = user.address
-                cachedUser.about = user.about
-                cachedUser.registered = user.registered
-                cachedUser.tags = user.tags.joined(separator: ",")
-                for friend in user.friends {
-                    let cachedFriend = CachedFriend(context: moc)
-                    cachedFriend.id = friend.id
-                    cachedFriend.name = friend.name
-                }
-            }
-            
-            // currently does not save to moc
-        }
     }
 }
 
