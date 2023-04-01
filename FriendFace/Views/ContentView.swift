@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
+    
     @State private var users = [User]()
     
     var sortedUsers: [User] {
@@ -36,6 +39,18 @@ struct ContentView: View {
                     }
                 }
             }
+            /*
+            Button("Add user") {
+                let firstName = "John"
+                let lastName = "Doe"
+                
+                let user = CachedUser(context: moc)
+                user.id = UUID()
+                user.name = "\(firstName) \(lastName)"
+                
+                try? moc.save()
+            }
+            */
             .navigationTitle("Friend Face")
         }
         .task {
