@@ -46,7 +46,7 @@ struct UserDetailView: View {
             UserDescription(user: user)
             
             RectangleDivider()
-            
+
             UserTags(allUsers: allUsers, selectedUser: user.name, tags: user.tags)
                 .padding(.bottom)
             
@@ -67,6 +67,7 @@ struct UserDetailView: View {
                             .stroke(Color.blue.opacity(0.2), lineWidth: 4)
                     )
             }
+
         }
         .sheet(isPresented: $isShowingFriendsView) {
             FriendsView(allUsers: allUsers, title: $title, friends: $friendsList)
