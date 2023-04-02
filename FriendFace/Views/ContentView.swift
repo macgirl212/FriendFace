@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
+    @FetchRequest(sortDescriptors: []) var cachedFriends: FetchedResults<CachedFriend>
     
     @State private var users = [User]()
     
@@ -57,7 +58,7 @@ struct ContentView: View {
     }
     
     func loadData() async throws {
-        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
+        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendfaces.json") else {
             print("Invalid URL")
             return
         }
@@ -84,6 +85,12 @@ struct ContentView: View {
                 }
             }
             for cachedUser in cachedUsers {
+                var friendsArray = [Friend]()
+                for friend in cachedUser.friendsArray {
+                    let cachedFriend = Friend(id: friend.friendId ?? "1234", name: friend.friendName ?? "Unknown")
+                    friendsArray.append(cachedFriend)
+                }
+                
                 let user = User(
                     id: cachedUser.id ?? "123",
                     isActive: cachedUser.isActive,
@@ -95,7 +102,7 @@ struct ContentView: View {
                     about: cachedUser.about ?? "",
                     registered: cachedUser.registered ?? Date.now,
                     tags: cachedUser.tags?.components(separatedBy: ",") ?? [],
-                    friends: []
+                    friends: friendsArray
                 )
                 users.append(user)
             }
@@ -107,42 +114,6 @@ struct ContentView: View {
     
     func cacheUsers(_ users: [User]) async throws {
         await MainActor.run {
-            print(users[0].tags)
-            
-            // for testing purposes
-            let cachedUser = CachedUser(context: moc)
-            cachedUser.id = users[0].id
-            cachedUser.isActive = users[0].isActive
-            cachedUser.name = users[0].name
-            cachedUser.age = Int16(users[0].age)
-            cachedUser.company = users[0].company
-            cachedUser.email = users[0].email
-            cachedUser.address = users[0].address
-            cachedUser.about = users[0].about
-            cachedUser.registered = users[0].registered
-            cachedUser.tags = users[0].tags.joined(separator: ",")
-            
-            try? moc.save()
-            
-            for cachedUser in cachedUsers {
-                let user = User(
-                    id: cachedUser.id ?? "123",
-                    isActive: cachedUser.isActive,
-                    name: cachedUser.name ?? "Anonymous",
-                    age: Int(cachedUser.age),
-                    company: cachedUser.company ?? "Company",
-                    email: cachedUser.email ?? "Unknown",
-                    address: cachedUser.address ?? "Unknown",
-                    about: cachedUser.about ?? "",
-                    registered: cachedUser.registered ?? Date.now,
-                    tags: cachedUser.tags?.components(separatedBy: ",") ?? [],
-                    friends: []
-                )
-                self.users.append(user)
-            }
-
-            /*
-            // hopefully soon to be live code
             for user in users {
                 let cachedUser = CachedUser(context: moc)
                 cachedUser.id = user.id
@@ -155,14 +126,19 @@ struct ContentView: View {
                 cachedUser.about = user.about
                 cachedUser.registered = user.registered
                 cachedUser.tags = user.tags.joined(separator: ",")
-                
+                for friend in user.friends {
+                    let cachedFriend = CachedFriend(context: moc)
+                    cachedFriend.friendId = friend.id
+                    cachedFriend.friendName = friend.name
+                    cachedUser.addToFriends(cachedFriend)
+                }
+
                 /*
                 if moc.hasChanges {
                     try? moc.save()
                 }
                  */
             }
-             */
         }
     }
     
