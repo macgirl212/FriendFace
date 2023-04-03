@@ -58,7 +58,7 @@ struct ContentView: View {
     }
     
     func loadData() async throws {
-        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendfaces.json") else {
+        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
             print("Invalid URL")
             return
         }
@@ -87,14 +87,14 @@ struct ContentView: View {
             for cachedUser in cachedUsers {
                 var friendsArray = [Friend]()
                 for friend in cachedUser.friendsArray {
-                    let cachedFriend = Friend(id: friend.friendId ?? "1234", name: friend.friendName ?? "Unknown")
+                    let cachedFriend = Friend(id: friend.wrappedId, name: friend.wrappedName)
                     friendsArray.append(cachedFriend)
                 }
                 
                 let user = User(
-                    id: cachedUser.id ?? "123",
+                    id: cachedUser.wrappedId,
                     isActive: cachedUser.isActive,
-                    name: cachedUser.name ?? "Anonymous",
+                    name: cachedUser.wrappedName,
                     age: Int(cachedUser.age),
                     company: cachedUser.company ?? "Company",
                     email: cachedUser.email ?? "Unknown",
@@ -130,14 +130,12 @@ struct ContentView: View {
                     let cachedFriend = CachedFriend(context: moc)
                     cachedFriend.friendId = friend.id
                     cachedFriend.friendName = friend.name
-                    cachedUser.addToFriends(cachedFriend)
+                    print(cachedUser.friendsArray)
+                    // cachedUser.addToFriends(cachedFriend)
                 }
-
-                /*
                 if moc.hasChanges {
                     try? moc.save()
                 }
-                 */
             }
         }
     }

@@ -28,6 +28,14 @@ extension CachedUser {
     @NSManaged public var tags: String?
     @NSManaged public var friends: NSSet?
     
+    public var wrappedId: String {
+        id ?? "123"
+    }
+    
+    public var wrappedName: String {
+        name ?? "Unknown"
+    }
+    
     public var friendsArray: [CachedFriend] {
         let set = friends as? Set<CachedFriend> ?? []
         

@@ -4,6 +4,11 @@
         <attribute name="friendId" optional="YES" attributeType="String"/>
         <attribute name="friendName" optional="YES" attributeType="String"/>
         <relationship name="isFriendsOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedUser" inverseName="friends" inverseEntity="CachedUser"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="friendId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="CachedUser" representedClassName="CachedUser" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String"/>
