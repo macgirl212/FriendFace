@@ -28,12 +28,36 @@ extension CachedUser {
     @NSManaged public var tags: String?
     @NSManaged public var friends: NSSet?
     
+    public var wrappedAbout: String {
+        about ?? ""
+    }
+    
+    public var wrappedAddress: String {
+        address ?? "Unknown"
+    }
+    
+    public var wrappedCompany: String {
+        company ?? "Unknown"
+    }
+    
+    public var wrappedEmail: String {
+        email ?? "Unknown"
+    }
+    
     public var wrappedId: String {
-        id ?? "123"
+        id ?? UUID().uuidString
     }
     
     public var wrappedName: String {
         name ?? "Unknown"
+    }
+    
+    public var wrappedRegistered: Date {
+        registered ?? Date.now
+    }
+    
+    public var wrappedTags: [String] {
+        tags?.components(separatedBy: ",") ?? []
     }
     
     public var friendsArray: [CachedFriend] {

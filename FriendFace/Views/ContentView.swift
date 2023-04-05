@@ -96,12 +96,12 @@ struct ContentView: View {
                     isActive: cachedUser.isActive,
                     name: cachedUser.wrappedName,
                     age: Int(cachedUser.age),
-                    company: cachedUser.company ?? "Company",
-                    email: cachedUser.email ?? "Unknown",
-                    address: cachedUser.address ?? "Unknown",
-                    about: cachedUser.about ?? "",
-                    registered: cachedUser.registered ?? Date.now,
-                    tags: cachedUser.tags?.components(separatedBy: ",") ?? [],
+                    company: cachedUser.wrappedCompany,
+                    email: cachedUser.wrappedEmail,
+                    address: cachedUser.wrappedAddress,
+                    about: cachedUser.wrappedAbout,
+                    registered: cachedUser.wrappedRegistered,
+                    tags: cachedUser.wrappedTags,
                     friends: friendsArray
                 )
                 users.append(user)
