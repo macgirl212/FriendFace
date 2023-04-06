@@ -2,7 +2,7 @@
 //  CachedFriend+CoreDataProperties.swift
 //  FriendFace
 //
-//  Created by Melody Davis on 4/3/23.
+//  Created by Melody Davis on 4/4/23.
 //
 //
 
@@ -16,18 +16,18 @@ extension CachedFriend {
         return NSFetchRequest<CachedFriend>(entityName: "CachedFriend")
     }
 
-    @NSManaged public var friendId: String?
-    @NSManaged public var friendName: String?
+    @NSManaged public var id: String?
+    @NSManaged public var name: String?
     @NSManaged public var isFriendsOf: NSSet?
     
-    public var wrappedName: String {
-        friendName ?? "Unknown"
+    public var wrappedId: String {
+        id ?? "123"
     }
     
-    public var wrappedId: String {
-        friendId ?? "123"
+    public var wrappedName: String {
+        name ?? "Unknown"
     }
-
+    
 }
 
 // MARK: Generated accessors for isFriendsOf

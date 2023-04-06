@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B7A74CA29DD1BF600D5E9F0 /* CachedFriend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7A74C829DD1BF600D5E9F0 /* CachedFriend+CoreDataClass.swift */; };
+		3B7A74CB29DD1BF600D5E9F0 /* CachedFriend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7A74C929DD1BF600D5E9F0 /* CachedFriend+CoreDataProperties.swift */; };
 		3B8B5B0E29D7D27000A7D6A1 /* FriendFace.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B5B0C29D7D27000A7D6A1 /* FriendFace.xcdatamodeld */; };
 		3B8B5B1029D7D2BF00A7D6A1 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B5B0F29D7D2BF00A7D6A1 /* DataController.swift */; };
 		3B8BCEB629CE8B5300600E2F /* UserDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8BCEB529CE8B5300600E2F /* UserDescription.swift */; };
@@ -17,8 +19,6 @@
 		3B8CEE2129CB8937006AC1C2 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8CEE2029CB8937006AC1C2 /* FriendsView.swift */; };
 		3BB50FA029D9FE1E00390693 /* CachedUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB50F9C29D9FE1E00390693 /* CachedUser+CoreDataClass.swift */; };
 		3BB50FA129D9FE1E00390693 /* CachedUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB50F9D29D9FE1E00390693 /* CachedUser+CoreDataProperties.swift */; };
-		3BC3244A29DB972500818F97 /* CachedFriend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC3244829DB972500818F97 /* CachedFriend+CoreDataClass.swift */; };
-		3BC3244B29DB972500818F97 /* CachedFriend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC3244929DB972500818F97 /* CachedFriend+CoreDataProperties.swift */; };
 		3BFFF7B029CA33E500B4E1EA /* FriendFaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFFF7AF29CA33E500B4E1EA /* FriendFaceApp.swift */; };
 		3BFFF7B229CA33E500B4E1EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFFF7B129CA33E500B4E1EA /* ContentView.swift */; };
 		3BFFF7B429CA33E600B4E1EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BFFF7B329CA33E600B4E1EA /* Assets.xcassets */; };
@@ -28,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B7A74C829DD1BF600D5E9F0 /* CachedFriend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedFriend+CoreDataClass.swift"; path = "FriendFace/Models/CachedFriend+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		3B7A74C929DD1BF600D5E9F0 /* CachedFriend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedFriend+CoreDataProperties.swift"; path = "FriendFace/Models/CachedFriend+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		3B8B5B0D29D7D27000A7D6A1 /* FriendFace.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FriendFace.xcdatamodel; sourceTree = "<group>"; };
 		3B8B5B0F29D7D2BF00A7D6A1 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		3B8BCEB529CE8B5300600E2F /* UserDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDescription.swift; sourceTree = "<group>"; };
@@ -36,10 +38,8 @@
 		3B8CEE1C29CB742C006AC1C2 /* UserDetailSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailSegment.swift; sourceTree = "<group>"; };
 		3B8CEE1E29CB7FC3006AC1C2 /* UserTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTags.swift; sourceTree = "<group>"; };
 		3B8CEE2029CB8937006AC1C2 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
-		3BB50F9C29D9FE1E00390693 /* CachedUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedUser+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		3BB50F9D29D9FE1E00390693 /* CachedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedUser+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		3BC3244829DB972500818F97 /* CachedFriend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedFriend+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3BC3244929DB972500818F97 /* CachedFriend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CachedFriend+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3BB50F9C29D9FE1E00390693 /* CachedUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedUser+CoreDataClass.swift"; path = "FriendFace/Models/CachedUser+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		3BB50F9D29D9FE1E00390693 /* CachedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedUser+CoreDataProperties.swift"; path = "FriendFace/Models/CachedUser+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		3BFFF7AC29CA33E500B4E1EA /* FriendFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BFFF7AF29CA33E500B4E1EA /* FriendFaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendFaceApp.swift; sourceTree = "<group>"; };
 		3BFFF7B129CA33E500B4E1EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +60,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B7A74CC29DD237000D5E9F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B7A74C829DD1BF600D5E9F0 /* CachedFriend+CoreDataClass.swift */,
+				3B7A74C929DD1BF600D5E9F0 /* CachedFriend+CoreDataProperties.swift */,
+				3BB50F9C29D9FE1E00390693 /* CachedUser+CoreDataClass.swift */,
+				3BB50F9D29D9FE1E00390693 /* CachedUser+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3B8BCEB729CE8D7600600E2F /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,12 +111,9 @@
 		3BFFF7AE29CA33E500B4E1EA /* FriendFace */ = {
 			isa = PBXGroup;
 			children = (
-				3BC3244829DB972500818F97 /* CachedFriend+CoreDataClass.swift */,
-				3BC3244929DB972500818F97 /* CachedFriend+CoreDataProperties.swift */,
-				3BB50F9C29D9FE1E00390693 /* CachedUser+CoreDataClass.swift */,
-				3BB50F9D29D9FE1E00390693 /* CachedUser+CoreDataProperties.swift */,
 				3B8BCEB729CE8D7600600E2F /* Components */,
 				3BFFF7C329CA3D7600B4E1EA /* JSONData */,
+				3B7A74CC29DD237000D5E9F0 /* Models */,
 				3B8CEE1929CB67C9006AC1C2 /* Views */,
 				3BFFF7AF29CA33E500B4E1EA /* FriendFaceApp.swift */,
 				3BFFF7B329CA33E600B4E1EA /* Assets.xcassets */,
@@ -206,7 +214,7 @@
 				3B8B5B0E29D7D27000A7D6A1 /* FriendFace.xcdatamodeld in Sources */,
 				3B8B5B1029D7D2BF00A7D6A1 /* DataController.swift in Sources */,
 				3B8CEE1F29CB7FC3006AC1C2 /* UserTags.swift in Sources */,
-				3BC3244A29DB972500818F97 /* CachedFriend+CoreDataClass.swift in Sources */,
+				3B7A74CA29DD1BF600D5E9F0 /* CachedFriend+CoreDataClass.swift in Sources */,
 				3BB50FA029D9FE1E00390693 /* CachedUser+CoreDataClass.swift in Sources */,
 				3B8BCEB629CE8B5300600E2F /* UserDescription.swift in Sources */,
 				3B8CEE1D29CB742C006AC1C2 /* UserDetailSegment.swift in Sources */,
@@ -214,7 +222,7 @@
 				3B8CEE2129CB8937006AC1C2 /* FriendsView.swift in Sources */,
 				3BFFF7B229CA33E500B4E1EA /* ContentView.swift in Sources */,
 				3BFFF7C729CA3E7800B4E1EA /* Friend.swift in Sources */,
-				3BC3244B29DB972500818F97 /* CachedFriend+CoreDataProperties.swift in Sources */,
+				3B7A74CB29DD1BF600D5E9F0 /* CachedFriend+CoreDataProperties.swift in Sources */,
 				3BFFF7B029CA33E500B4E1EA /* FriendFaceApp.swift in Sources */,
 				3B8CEE1829CB67BB006AC1C2 /* UserDetailView.swift in Sources */,
 				3BFFF7C229CA3D4B00B4E1EA /* User.swift in Sources */,

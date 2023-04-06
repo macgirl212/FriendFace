@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
-    @FetchRequest(sortDescriptors: []) var cachedFriends: FetchedResults<CachedFriend>
     
     @State private var users = [User]()
     
@@ -41,8 +40,6 @@ struct ContentView: View {
                         }
                     }
                 }
-                // for testing purposes
-                .onDelete(perform: deleteUsers)
             }
             .navigationTitle("Friend Face")
         }
@@ -128,26 +125,16 @@ struct ContentView: View {
                 cachedUser.tags = user.tags.joined(separator: ",")
                 for friend in user.friends {
                     let cachedFriend = CachedFriend(context: moc)
-                    cachedFriend.friendId = friend.id
-                    cachedFriend.friendName = friend.name
-                    print(cachedUser.friendsArray)
-                    // cachedUser.addToFriends(cachedFriend)
+                    cachedFriend.id = friend.id
+                    cachedFriend.name = friend.name
+                    cachedUser.addToFriends(cachedFriend)
                 }
+
                 if moc.hasChanges {
                     try? moc.save()
                 }
             }
         }
-    }
-    
-    // for testing purposes
-    func deleteUsers(at offsets: IndexSet) {
-        for offset in offsets {
-            let user = cachedUsers[offset]
-            moc.delete(user)
-        }
-        
-        try? moc.save()
     }
 }
 
