@@ -9,30 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.isActive, order: .reverse),
+        SortDescriptor(\.name)
+    ]) var cachedUsers: FetchedResults<CachedUser>
     
     @State private var users = [User]()
-    
-    var sortedUsers: [User] {
-        return users.sorted { t1, t2 in
-            // sort by name
-            if t1.isActive == t2.isActive {
-                return t1.name < t2.name
-            }
-            // sort by isActive
-            return t1.isActive && !t2.isActive
-        }
-    }
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(sortedUsers, id: \.id) { user in
+                ForEach(cachedUsers, id: \.wrappedId) { user in
                     NavigationLink {
-                        UserDetailView(allUsers: users, userId: user.id)
+                        UserDetailView(allUsers: users, userId: user.wrappedId)
                     } label: {
                         HStack(alignment: .center) {
-                            Text(user.name)
+                            Text(user.wrappedName)
                                 .font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Text(user.isActive ? "Online" : "Offline")
